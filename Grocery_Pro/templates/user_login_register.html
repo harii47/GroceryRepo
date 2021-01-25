@@ -1,0 +1,94 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    <style>
+        #address{
+            min-height: 20px;
+            min-width: 500px;
+            max-height: 70px;
+            max-width: 500px;}
+        .form-control{
+            {#width: 700px;#}
+        }
+    </style>
+</head>
+<body>
+    {% block user_only %}
+{% if type == "Login" %}
+<div class="container">
+    <div class="jumbotron">
+        <form method="post" action="#">
+        <div class="jumbotron">
+            {% csrf_token %}
+            {{ reply }}
+            {{ msg }}
+            <div class="form-group">
+                    <label for="email">Email Id:</label>
+                <input type="email" class="form-control" id="email" placeholder="Enter Email:" name="username">
+            </div>
+            <div class="form-group">
+                <label for="password"> Password:</label>
+                <input type="password" class="form-control" id="password" placeholder="Enter Password" name="password">
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary" value="Login">
+            </div>
+    </div>
+        </form>
+<center><form action="/register/" method="Post">
+    {% csrf_token %}
+    <div class="form-group">
+        <p> If you aren't register before so first register </p>
+        <button type="submit" class="btn btn-primary">Register</button>
+    </div>
+</form></center>
+    </div>
+</div>
+{% endif %}
+{% if type == "Registration" %}
+<form method="post">
+    {% csrf_token %}
+    <div class="container">
+        <div class="jumbotron">
+            {{ reply }}
+            <div class="form-group">
+                <label for="f_name"> Name:</label>
+                <input type="text" id="f_name" class="form-control" placeholder="Enter First Name" name="name">
+            </div>
+            {{ msg }}
+            <div class="form-group">
+                <label for="mobile">Mobile No:</label>
+                <input type="number" class="form-control" id="mobile" placeholder="Enter Mobile:" name="mobile">
+            </div>
+            <div class="form-group">
+                <label for="email">Email Id:</label>
+                <input type="email" class="form-control" id="email" placeholder="Enter Email id:" name="email">
+            </div>
+            <div class="form-group">
+                <label for="password"> Password:</label>
+                <input type="password" class="form-control" id="password" placeholder="Enter Password" name="password">
+            </div>
+            <div class="form-group">
+                <label for="address"> Address:</label>
+                <textarea class="form-control" id="address" placeholder="Enter adderess" name="address"></textarea>
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary" value="Register">
+                <a href="#" class="btn btn-warning">Login</a>
+                <a href="/home" class="btn btn-danger">Home</a>
+            </div>
+            <div class="form-group">
+            </div>
+        </div>
+    </div>
+</form>
+{% endif %}
+{% endblock %}
+{% endblock %}
+
+</body>
+</html>

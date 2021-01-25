@@ -1,0 +1,43 @@
+{% extends 'index.html' %}
+{% load static %}
+<html>
+    <head>
+        {% block style %}
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Add List</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{% static 'style.css' %}">
+    {% endblock %}
+    </head>
+    <body>
+    {% block item_content %}
+        <div class="container mt-5">
+            <h1>Add Grocery List</h1>
+            <form action="/item?item_id={{ all_item.id }}" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label>Item name</label>
+                    <input type="text" class="form-control" name="name" placeholder="{{ all_item.item_name}}"/>
+                </div>
+                <div class="form-group">
+                    <label>Item quantity</label>
+                    <input type="text" class="form-control" name="quantity" placeholder="{{ all_item.item_quantity}}" value="{{ all_item.item_quantity }}"/>
+                </div>
+                <div class="form-group">
+                    <label>Item status</label>
+                    <select class="form-control" name="status">
+                        <option value= "{{ all_item.item_status }}">{{ all_item.item_status }}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Date</label>
+                    <input class="form-control" name="date" placeholder={{ all_item.date|date:"d-m-Y"}}>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Add" class="btn btn-danger">
+                </div>
+            </form>
+        </div>
+    {% endblock %}
+    </body> 
+</html>
