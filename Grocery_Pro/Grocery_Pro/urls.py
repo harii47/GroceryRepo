@@ -21,9 +21,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path(r'', views.home, name='home'),
     path(r'home', views.home, name='home'),
+    path(r'filter', views.home, name='filter'),
     path(r'register', views.register, name='register'),
     path(r'login', views.login, name='login'),
     path(r'logout', views.log_out, name='logout'),
     path(r'item', views.select_item, name='item'),
-    path(r'item', views.select_item, name='item'),
+    path(r'saved_item', views.saved_item, name='saved_item'),
 ]
